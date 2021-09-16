@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+Faker::Address.latitude #=> "-58.17256227443719"
+Faker::Address.longitude #=> "-156.65548382095133"
