@@ -8,5 +8,14 @@
 
 require 'faker'
 
-Faker::Address.latitude #=> "-58.17256227443719"
-Faker::Address.longitude #=> "-156.65548382095133"
+# Faker::Address.latitude #=> "-58.17256227443719"
+# Faker::Address.longitude #=> "-156.65548382095133"
+
+5.times do
+  p 'Seeding 5 random latitude and longitude...'
+  test_museum = Museum.new(
+    Longitude: Faker::Address.longitude,
+    Latitude: Faker::Address.latitude
+  )
+  p "#{Museum.count}/5 - Seeded random longitude/latitude " if test_museum.save!
+end

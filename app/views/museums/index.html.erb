@@ -1,0 +1,28 @@
+
+<h1>Musuems</h1>
+
+<p>Postcode - <%= @address_parsed['features'][0]['context'][0]['text'] %></p>
+<p>Name - <%= @address_parsed['features'][0]['place_name'] %></p>
+
+<h2>Test </h2>
+<% new_array = [] %>
+<% museum_array = [] %>
+
+
+<% @address_parsed['features'].each do |museum| %>
+  <% new_array.append([museum['context'][0]['text'], museum['place_name']]) %>
+<% end %>
+
+<% museum_array = new_array.group_by { |museum| museum[0].to_sym } %>
+
+<% museum_array.each do |key,value| %>
+  <ul>
+    <li>
+      Postcode - <%= "#{key}" %>
+    </li>
+    <% museum_name = value[0][1] %>
+    <li>
+      Name - <%= "#{museum_name}" %>
+    </li>
+  </ul>
+<% end %>
